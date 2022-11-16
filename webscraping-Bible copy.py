@@ -5,11 +5,11 @@ from urllib.request import urlopen, Request
 
 #BUILD URL
 
-webpage = 'https://ebible.org/asv/JHN'
+webpage = 'https://biblehub.com/asv/john/'
 
 chapter = random.randint(1,21)
 
-url = webpage + "{:02d}".format(chapter) + '.htm'
+url = webpage + str(chapter) + '.htm'
 
 print(url)
 
@@ -28,14 +28,14 @@ print(title.text)
 
 #SCRAPE WEBPAGE
 
-verses = soup.findAll('div',attrs={'class':'main'})
+verses = soup.findAll('div',attrs={'class':'chap'})
 
 for verse in verses:
     verse_list = verse.text.split('.')
 
 #print(verse_list)
 
-myverse = random.choice(verse_list[:len(verse_list)-5])
+myverse = random.choice(verse_list)
 
 print(f"Chapter: {chapter}, Verse:{myverse}")
 
